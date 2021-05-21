@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("head", {title: "Dashboard | Web-Site" }) %>
+
+  <body>
+    <%- include("navbar", {user: user, page: "dashboard"}) %>
+
+    <div class="container">
+      <h1 class="mt-1">Dashboard</h1>
+
+      <form action="/things" method="POST">
+        <div class="mb-3 form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="things"
+            name="things"
+          />
+          <label class="form-check-label" for="things">Do things</label>
+        </div>
+
+        <div class="mb-3 form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="stuff"
+            name="stuff"
+          />
+          <label class="form-check-label" for="stuff">Do stuff</label>
+        </div>
+
+        <div class="mb-3 form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="something"
+            name="something"
+          />
+          <label class="form-check-label" for="something">Use something</label>
+        </div>
+
+        <div class="mb-3 form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="do"
+            name="do"
+          />
+          <label class="form-check-label" for="do">Don't not do it</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg">Do it!</button>
+      </form>
+    </div>
+  </body>
+</html>

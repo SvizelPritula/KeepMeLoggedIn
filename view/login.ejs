@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("head", {title: "Log in | Web-Site" }) %>
+
+  <body>
+    <%- include("navbar", {user: user, page: "login"}) %>
+
+    <div class="container">
+      <h1 class="mt-1">Log in</h1>
+
+      <% if (user == null || !user.stay) { %>
+      <form action="/login" method="POST">
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            name="username"
+            maxlength="32"
+            autocomplete="off"
+            autofocus
+          />
+          <label for="username" class="form-label">Username</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            autocomplete="off"
+            autofocus
+          />
+          <label for="password" class="form-label">Password</label>
+        </div>
+
+        <div class="mb-3 form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="stay"
+            name="stay"
+          />
+          <label class="form-check-label" for="stay">Keep me logged in</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg">Log in</button>
+      </form>
+      <% } else { %>
+        <p>
+          You can't log in as a different user right now.
+        </p>
+      <% } %>
+    </div>
+  </body>
+</html>

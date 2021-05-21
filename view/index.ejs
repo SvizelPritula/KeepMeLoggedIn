@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("head", {title: "Web-Site" }) %>
+
+  <body>
+    <%- include("navbar", {user: user, page: "index"}) %>
+
+    <div class="container">
+      <h1 class="mt-1">Welcome!</h1>
+
+      <% if (user != null) { %>
+      <p>Welcome, <%= user.name %>, to our website!</p>
+      <% } else { %>
+      <p>Welcome to our website!</p>
+      <% } %>
+      <p>
+        We have pages, elements and things! Our website got nominated for three
+        awards at the daily Web-Site website of the day awards of <%= new
+        Date().toLocaleDateString("en-uk") %>. Our website has bleeding-edge
+        high-quality modern features, such as a dashboard, a login page, and a
+        cookie-based hyper-secure login system that will remember you forever!
+        With a little help from DevTools, this site can do absolutely anything!
+      </p>
+    </div>
+  </body>
+</html>

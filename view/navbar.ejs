@@ -1,0 +1,95 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Web-Site</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbar"
+      aria-controls="navbar"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav mb-2 mb-md-0">
+        <li class="nav-item">
+          <a
+            class="nav-link<%= page == 'index' ? ' active' : '' %>"
+            aria-current="<%= page == 'index' ? 'page' : 'false' %>"
+            href="/"
+          >
+            Home
+          </a>
+        </li>
+        <% if (user != null) { %>
+        <li class="nav-item">
+          <a
+            class="nav-link<%= page == 'dashboard' ? ' active' : '' %>"
+            aria-current="<%= page == 'dashboard' ? 'page' : 'false' %>"
+            href="/dashboard"
+          >
+            Dashboard
+          </a>
+        </li>
+        <% } %>
+      </ul>
+      <ul class="navbar-nav mb-2 mb-md-0 ms-auto">
+        <% if (user == null) { %>
+        <li class="nav-item">
+          <a
+            class="nav-link<%= page == 'login' ? ' active' : '' %>"
+            aria-current="<%= page == 'login' ? 'page' : 'false' %>"
+            href="/login"
+          >
+            Log in
+          </a>
+        </li>
+        <% } else { %>
+        <li class="nav-item dropdown">
+          <button
+            class="btn btn-link nav-link dropdown-toggle"
+            type="button"
+            id="options"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <%= user.name %>
+          </button>
+
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="options">
+            <% if (user.stay) { %>
+            <li
+              tabindex="0"
+              data-bs-toggle="tooltip"
+              data-bs-placement="left"
+              title="You can't log out right now"
+            >
+              <form action="/logout" method="POST">
+                <button
+                  class="btn btn-link dropdown-item"
+                  disabled
+                  type="submit"
+                >
+                  Log out
+                </button>
+              </form>
+            </li>
+            <% } else { %>
+            <li>
+              <form action="/logout" method="POST">
+                <button class="btn btn-link dropdown-item" type="submit">
+                  Log out
+                </button>
+              </form>
+            </li>
+            <% } %>
+          </ul>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>
